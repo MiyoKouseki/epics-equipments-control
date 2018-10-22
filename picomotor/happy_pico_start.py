@@ -60,9 +60,9 @@ def main():
     #print "Exterminate !!!!!"
     #exit()
     #os.chdir('/opt/rtcds/userapps/release/cds/common/scripts/picomotor')
-    os.chdir('/opt/rtcds/userapps/release/cds/common/scripts/picomotor_ver2')
-    print 'python -m picomotor_ver2 K1:PICO-%s_ %s &' % (agvs[1],driverDict[agvs[1]])
-    os.system('python -m picomotor_ver2 K1:PICO-%s_ %s &' % (agvs[1],driverDict[agvs[1]]) )
+    os.chdir('/opt/rtcds/userapps/release/cds/common/scripts/epics-motor-control/picomotor')
+    print 'python -m picomotor K1:PICO-%s_ %s &' % (agvs[1],driverDict[agvs[1]])
+    os.system('python -m picomotor K1:PICO-%s_ %s &' % (agvs[1],driverDict[agvs[1]]) )
 
 if __name__ == "__main__":
     try:

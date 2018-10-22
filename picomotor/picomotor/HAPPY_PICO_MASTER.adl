@@ -1,0 +1,1030 @@
+
+file {
+	name="/opt/rtcds/userapps/trunk/cds/common/scripts/picomotor_ver2/picomotor_ver2/HAPPY_PICO_MASTER.adl"
+	version=030107
+}
+display {
+	object {
+		x=2335
+		y=65
+		width=624
+		height=475
+	}
+	clr=14
+	bclr=56
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+composite {
+	object {
+		x=490
+		y=7
+		width=116
+		height=71
+	}
+	"composite name"=""
+	children {
+		polygon {
+			object {
+				x=490
+				y=7
+				width=20
+				height=20
+			}
+			"basic attribute" {
+				clr=57
+			}
+			points {
+				(490,16)
+				(510,7)
+				(510,27)
+				(490,16)
+			}
+		}
+		rectangle {
+			object {
+				x=508
+				y=8
+				width=98
+				height=70
+			}
+			"basic attribute" {
+				clr=57
+			}
+		}
+	}
+}
+text {
+	object {
+		x=11
+		y=8
+		width=550
+		height=30
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="PICOMOTOR MASTER CONTROLS"
+}
+"related display" {
+	object {
+		x=8
+		y=34
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=MCO,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=MCO,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=MCO,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=MCO,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="MCO"
+}
+"related display" {
+	object {
+		x=1049
+		y=780
+		width=462
+		height=66
+	}
+	display[0] {
+		label="BF Moving Mass A"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=ETMX,DOF=1"
+	}
+	display[1] {
+		label="BF Moving Mass B"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=ETMX,DOF=2"
+	}
+	display[2] {
+		label="Payload Yaw"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=ETMX,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=ETMX,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="ETMX"
+}
+"related display" {
+	object {
+		x=341
+		y=393
+		width=150
+		height=30
+	}
+	display[0] {
+		label="BF Moving Mass A"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=ETMY,DOF=1"
+	}
+	display[1] {
+		label="BF Moving Mass B"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=ETMY,DOF=2"
+	}
+	display[2] {
+		label="Payload Yaw"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=ETMY,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=ETMY,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="ETMY"
+}
+"related display" {
+	object {
+		x=11
+		y=340
+		width=150
+		height=30
+	}
+	display[0] {
+		label="IM_PIT"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=SPARE3,DOF=PIT"
+	}
+	display[1] {
+		label="IM_ROL"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=SPARE3,DOF=ROL"
+	}
+	display[2] {
+		label="IM_YAW"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=SPARE3,DOF=YAW"
+	}
+	display[3] {
+		label="BF_1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=SPARE3,DOF=1"
+	}
+	display[4] {
+		label="BF_2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=SPARE3,DOF=2"
+	}
+	clr=14
+	bclr=55
+	label="SPARE3"
+}
+"related display" {
+	object {
+		x=8
+		y=68
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=MCI,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=MCI,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=MCI,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=MCI,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="MCI"
+}
+"related display" {
+	object {
+		x=8
+		y=102
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=MCE,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=MCE,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=MCE,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=MCE,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="MCE"
+}
+"related display" {
+	object {
+		x=7
+		y=200
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=IMMT1,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=IMMT1,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=IMMT1,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=IMMT1,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="IMMT1"
+}
+"related display" {
+	object {
+		x=5
+		y=240
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=BS,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=BS,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=BS,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=BS,DOF=4"
+	}
+	display[4] {
+		label="BS2"
+		name="HAPPY_PICO_CONTROL.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=BS,DOF=1"
+	}
+	clr=14
+	bclr=55
+	label="BS"
+}
+"related display" {
+	object {
+		x=5
+		y=283
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=IMMT2,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=IMMT2,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=IMMT2,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=IMMT2,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="IMMT2"
+}
+"related display" {
+	object {
+		x=177
+		y=72
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=STM1,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=STM1,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=STM1,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=STM1,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="STM1"
+}
+"related display" {
+	object {
+		x=175
+		y=112
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=STM2,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=STM2,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=STM2,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=STM2,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="STM2"
+}
+"related display" {
+	object {
+		x=175
+		y=155
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=POM1,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=POM1,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=POM1,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=POM1,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="POM1"
+}
+"related display" {
+	object {
+		x=339
+		y=160
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PRM_IM,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PRM_IM,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PRM_IM,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PRM_IM,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="PRM_IM"
+}
+"related display" {
+	object {
+		x=339
+		y=194
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PRM_BF,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PRM_BF,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PRM_BF,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PRM_BF,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="PRM_BF"
+}
+"related display" {
+	object {
+		x=339
+		y=5
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR3_IM,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR3_IM,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR3_IM,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR3_IM,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="PR3_IM"
+}
+"related display" {
+	object {
+		x=339
+		y=40
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR3_BF,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR3_BF,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR3_BF,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR3_BF,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="PR3_BF"
+}
+"related display" {
+	object {
+		x=339
+		y=79
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR2_IM,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR2_IM,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR2_IM,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR2_IM,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="PR2_IM"
+}
+"related display" {
+	object {
+		x=339
+		y=113
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR2_BF,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR2_BF,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR2_BF,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=PR2_BF,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="PR2_BF"
+}
+"related display" {
+	object {
+		x=171
+		y=359
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=BS_BF,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=BS_BF,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=BS_BF,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=BS_BF,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="BS_BF"
+}
+"related display" {
+	object {
+		x=171
+		y=320
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=BS_IM,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=BS_IM,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=BS_IM,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=BS_IM,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="BS_IM"
+}
+text {
+	object {
+		x=522
+		y=8
+		width=71
+		height=16
+	}
+	"basic attribute" {
+		clr=24
+	}
+	textix="PR3 IM chans"
+}
+text {
+	object {
+		x=550
+		y=24
+		width=71
+		height=16
+	}
+	"basic attribute" {
+		clr=24
+	}
+	textix="1: PITCH"
+}
+text {
+	object {
+		x=550
+		y=40
+		width=71
+		height=16
+	}
+	"basic attribute" {
+		clr=24
+	}
+	textix="2: ROLL"
+}
+text {
+	object {
+		x=551
+		y=56
+		width=71
+		height=16
+	}
+	"basic attribute" {
+		clr=24
+	}
+	textix="3: YAW"
+}
+polygon {
+	object {
+		x=162
+		y=200
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=57
+	}
+	points {
+		(162,209)
+		(182,200)
+		(182,220)
+		(162,209)
+	}
+}
+rectangle {
+	object {
+		x=180
+		y=201
+		width=130
+		height=75
+	}
+	"basic attribute" {
+		clr=57
+	}
+}
+text {
+	object {
+		x=194
+		y=201
+		width=71
+		height=16
+	}
+	"basic attribute" {
+		clr=24
+	}
+	textix="IMMTs1&2 chans"
+}
+text {
+	object {
+		x=204
+		y=217
+		width=71
+		height=16
+	}
+	"basic attribute" {
+		clr=24
+	}
+	textix="1: PITCH"
+}
+text {
+	object {
+		x=204
+		y=231
+		width=71
+		height=16
+	}
+	"basic attribute" {
+		clr=24
+	}
+	textix="2: YAW"
+}
+text {
+	object {
+		x=204
+		y=246
+		width=71
+		height=16
+	}
+	"basic attribute" {
+		clr=24
+	}
+	textix="3: X(optical axis)"
+}
+text {
+	object {
+		x=205
+		y=261
+		width=71
+		height=16
+	}
+	"basic attribute" {
+		clr=24
+	}
+	textix="4: Y"
+}
+"related display" {
+	object {
+		x=336
+		y=249
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=SR2_IM,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=SR2_IM,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=SR2_IM,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=SR2_IM,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="SR2_IM"
+}
+"related display" {
+	object {
+		x=336
+		y=283
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=SR2_BF,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=SR2_BF,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=SR2_BF,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=SR2_BF,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="SR2_BF"
+}
+"related display" {
+	object {
+		x=52
+		y=416
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=TEST,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=TEST,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=TEST,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="CUST_PICO.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=TEST,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="TEST"
+}
+"related display" {
+	object {
+		x=212
+		y=431
+		width=150
+		height=30
+	}
+	display[0] {
+		label="1"
+		name="HAPPY_PICO_CONTROL.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=TEST,DOF=1"
+	}
+	display[1] {
+		label="2"
+		name="HAPPY_PICO_CONTROL.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=TEST,DOF=2"
+	}
+	display[2] {
+		label="3"
+		name="HAPPY_PICO_CONTROL.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=TEST,DOF=3"
+	}
+	display[3] {
+		label="4"
+		name="HAPPY_PICO_CONTROL.adl"
+		args="USERAPPS=$(USERAPPS),SITE=$(SITE),site=$(site),IFO=$(IFO),ifo=$(ifo),PICOID=TEST,DOF=4"
+	}
+	clr=14
+	bclr=55
+	label="HAPPY TEST"
+}
