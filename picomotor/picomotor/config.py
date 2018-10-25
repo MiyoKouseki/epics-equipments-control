@@ -1,13 +1,11 @@
 
-
-
-
-def pvdb_dof(i):
-    _REV = '{0}_REV'.format(i)
-    _FWD = '{0}_FWD'.format(i)
-    _POSITION = '{0}_POSITION'.format(i)
-    _STEP = '{0}_STEP'.format(i)
-    _SPEED = '{0}_SPEED'.format(i)
+def pvdb_dof(dof):
+    _REV = '{dof}_REV'.format(dof=dof)
+    _FWD = '{dof}_FWD'.format(dof=dof)
+    _POSITION = '{dof}_POSITION'.format(dof=dof)
+    _STEP = '{dof}_STEP'.format(dof=dof)
+    _SPEED = '{dof}_SPEED'.format(dof=dof)
+    
     pvdb = {
         _REV: {
             'prec': 4,
@@ -32,10 +30,13 @@ def pvdb_dof(i):
     }
     return pvdb
 
-pvdb = pvdb_dof(1)
-pvdb.update(pvdb_dof(2))
-pvdb.update(pvdb_dof(3))
-pvdb.update(pvdb_dof(4))
+
+pvdb = {}
+for dof in ['1','2','3','4']:
+    pvdb.update(pvdb_dof(dof))
+
+    
+
 _ERROR = 'ERROR'
 _ERRORMESSAGE = 'ERRORMESSAGE'
 _STATUS = 'STATUS'
@@ -56,6 +57,10 @@ dic = {\
            'type':'string',
        },
    }
+    
 pvdb.update(dic)
+
+
 if __name__ == '__main__':    
-    print pvdb
+    for items in pvdb.items():
+        print items
