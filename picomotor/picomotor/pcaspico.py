@@ -10,12 +10,9 @@ from datetime import timedelta
 #import pyttsx
 
 pvdb = config.pvdb
-##################################################
-#'''
 
 ON = 1.0
-#'''
-##################################################
+#
 #os.environ['EPICS_CAS_INTF_ADDR_LIST'] = '10.68.10.255'
 #os.environ['EPICS_CAS_INTF_ADDR_LIST'] = 'localhost'
 #os.environ['EPICS_CAS_SERVER_PORT'] = '58901'
@@ -26,6 +23,7 @@ import logging.config
 
 from __init__ import get_module_logger
 logger = get_module_logger(__name__)
+
 
 class PcasDriver(pcaspy.Driver):
     def __init__(self, driver, prefix):
@@ -38,31 +36,46 @@ class PcasDriver(pcaspy.Driver):
         return value    
     
     def write(self, channel, value):
-        """
+        """ 
+        
         This function is called every "CAPUT (EPICS-CHANNEL) (VALUE)" command.
-        epics_channel : the channlel excluded PREFIX from EPICS-CHANNEL
-        value : VALUE
-        """
+        
+
+        Parameters
+        ----------
+        channel : str
+            Epics channel name that you want to change.
+        value : int
+            Value of the channel that you want to change. If switch epics channel,
+            value is either 0 or 1.
+        driverAddr : int, optional
+            Driver number that you want to change. Default value is 1, which means
+            master driver ethernet cable are connected. 
+            
+        Returns
+        -------
+        
+        """        
         self.setParam(channel, value) # need ! why????
+        
         driverAddr = 1
+        
         if "REV" in channel and value == ON:
             MOTORNUMBER, OPTION = channel.split("_")
             step = self.getParam(MOTORNUMBER+"_STEP")
-            #self.updatePVs()            
             self.driver.move_step(driverAddr,int(MOTORNUMBER),-1*step)
+            
         if "FWD" in channel and value == ON:
             MOTORNUMBER, OPTION = channel.split("_")
             step = self.getParam(MOTORNUMBER+"_STEP")
             self.updatePVs()
             self.driver.move_step(driverAddr,int(MOTORNUMBER),step)
+            
         if "COMMAND" in channel:
             command = value
-            #print command
-            self.driver.send(command)            
+            self.driver.send(command)
+            
         if "STATUS" in channel and value == ON:
-            #self.setParam("ERRORMESSAGE", 'Please Wait!')
-            #self.updatePVs()
-            #time.sleep(1)
             MOTORNUMBER = str(1)
             self.driver.ask_position(driverAddr,MOTORNUMBER)
             posi = self.driver.check_reply_message()
@@ -85,7 +98,6 @@ class PcasDriver(pcaspy.Driver):
             self.setParam("ERROR", error)
             errormessage = self.driver.check_error_message()
             self.setParam("ERRORMESSAGE", errormessage)
-            #self.setParam("ERRORMESSAGE", 'hoge')
             
         self.updatePVs()
         return True
@@ -127,10 +139,6 @@ class PcasServer(pcaspy.SimpleServer):
                 ～～～～～～～～～～～～～～～～
                 """
                 print "=================================="
-                #engine = pyttsx.init()
-                #engine.setProperty('rate', 100)
-                #engine.say('Bye')
-                #engine.runAndWait()
                 exit()
             else:
                 i=i+1
@@ -140,13 +148,10 @@ if __name__ == '__main__':
     import newfocus8742
     import sys
     import time
-    #import subprocess
-    #pl = subprocess.Popen('ps -ef | grep python',shell=True,stdout=subprocess.PIPE).communicate()[0]
-    #print pl
-    #exit()
+    #
     prefix   = 'K1:PICO-BS_IM_'
-    driverIP = '10.68.150.16'
-    mydriver   = newfocus8742.driver(driverIP)
+    driver_ip = '10.68.150.16'
+    mydriver   = newfocus8742.driver(driver_ip)
     picoserver = pcaspico.PcasServer(prefix, mydriver)
     try:
         picoserver.run()
