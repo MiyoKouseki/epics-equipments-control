@@ -1,4 +1,20 @@
 
+
+'''
+All epics channels for pico in single PCAserver are ;
+(PREFIX)_(ODF)_FWD,
+(PREFIX)_(ODF)_REV,
+(PREFIX)_(ODF)_POSITION,
+(PREFIX)_(ODF)_STEP,
+(PREFIX)_(ODF)_SPEED,
+(PREFIX)_ERRORMESSAGE,
+(PREFIX)_COMMAND,
+(PREFIX)_STATUS,
+where PREFIX is "K1:PICO-BS_IM_" and DOF is 1,2,3,4.
+
+'''
+
+
 def pvdb_dof(dof):
     _REV = '{dof}_REV'.format(dof=dof)
     _FWD = '{dof}_FWD'.format(dof=dof)
