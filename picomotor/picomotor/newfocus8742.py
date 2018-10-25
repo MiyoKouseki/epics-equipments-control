@@ -119,13 +119,15 @@ class controller(object):
         
     def __exit__(self,type, value, traceback):
         self.close()
+
         
 class driver(controller):
-    def __init__(self,ipaddr):
+    def __init__(self,ipaddr,driver_addr):
         super(driver,self).__init__(ipaddr)
         self.ipaddr = ipaddr
-        self.set_acc(1,1,500)
-        self.set_vel(1,1,500)                
+        self.driver_addr = driver_addr
+        #self.set_acc(1,1,500)
+        #self.set_vel(1,1,500)                
         
     def __enter__(self):
         super(driver,self).__enter__()
@@ -137,10 +139,10 @@ class driver(controller):
     def ask_driver_error(self):
         self.send('TE?')
 
-    def ask_position(self,driverAddr,motorAddr):
+    def ask_position(self,motorAddr):
         self.send('%sTP?'%(motorAddr))
 
-    def ask_speed(self,driverAddr,motorAddr):
+    def ask_speed(self,motorAddr):
         self.send('%sVA?'%(motorAddr))        
         
     def check_reply_message(self):
@@ -156,21 +158,21 @@ class driver(controller):
             pass
         return -34
     
-    def set_vel(self,driverAddr,motorAddr,vel):
+    def set_vel(self,motorAddr,vel):
         """ Max velocity 
         standard motor : 2000[step/sec] maybe..
         tiny motor     : 1750[step/sec]
         """
-        self.send('%s>%sVA%s'%(driverAddr,motorAddr,vel))
+        self.send('%s>%sVA%s'%(self.driver_addr,motorAddr,vel))
         
-    def set_acc(self,driverAddr,motorAddr,acc):
-        self.send('%s>%sAC%s'%(driverAddr,motorAddr,acc))
+    def set_acc(self,motorAddr,acc):
+        self.send('%s>%sAC%s'%(self.driver_addr,motorAddr,acc))
         
-    def move_step(self,driverAddr,motorAddr,count):
-        self.send('%s>%sPR%d'%(driverAddr,motorAddr,count))
+    def move_step(self,motorAddr,count):
+        self.send('%s>%sPR%d'%(self.driver_addr,motorAddr,count))
         
-    def stop_motor(self,driverAddr,motorAddr):
-        self.send('%s>%sST'%(driverAddr,motorAddr))
+    def stop_motor(self,motorAddr):
+        self.send('%s>%sST'%(self.driver_addr,motorAddr))
 
     def abort(self):
         self.send('AB')

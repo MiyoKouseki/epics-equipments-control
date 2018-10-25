@@ -151,7 +151,8 @@ if __name__ == '__main__':
     #
     prefix   = 'K1:PICO-BS_IM_'
     driver_ip = '10.68.150.16'
-    mydriver   = newfocus8742.driver(driver_ip)
+    driver_addr = 1 # means master
+    mydriver   = newfocus8742.driver(driver_ip,driver_addr)
     picoserver = pcaspico.PcasServer(prefix, mydriver)
     try:
         picoserver.run()

@@ -14,16 +14,13 @@ logger = get_module_logger(__name__)
 
 try :
     prefix = sys.argv[1]
-    driverIP = sys.argv[2]
-    #import subprocess
-    #pl = subprocess.Popen('ps alx | grep {0}'.format(prefix,driverIP),shell=True,stdout=subprocess.PIPE).communicate()[0]
-    #print pl
-    #exit()
+    driver_ip = sys.argv[2]
+    driver_addr = sys.argv[3]
 except IndexError:
-    sys.exit("python -m K1:PICO-MCI_IM_ 10.68.10.230.")
+    sys.exit("python -m K1:PICO-MCI_IM_ 10.68.10.230 1")
         
 print prefix,driverIP
-picoserver = pcaspico.PcasServer(prefix,newfocus8742.driver(driverIP))
+picoserver = pcaspico.PcasServer(prefix,newfocus8742.driver(driver_ip,driver_addr))
 
 try:
     logger.info("Start server!")
