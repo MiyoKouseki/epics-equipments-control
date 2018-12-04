@@ -1,4 +1,4 @@
-# epics-motor-control
+# epics-equipments-control
 
 ## Information
 
