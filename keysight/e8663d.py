@@ -1,48 +1,93 @@
-# import socket
-# HOST = "10.68.150.65"    # The remote host
-# PORT = 5023             # The same port as used by the server
+#
+#
+from visa import ResourceManager
 
-# s = socket.socket (socket.AF_INET, socket.SOCK_STREAM)
-# s.connect((HOST, PORT))
+class E8663D(ResourceManager):        
+    def __new__(cls,*args,**kwargs):
+        '''
 
-# exit()
-import visa
-rm = visa.ResourceManager('@py')
-visa.log_to_screen
-ins = rm.open_resource('TCPIP::10.68.150.65::5025::SOCKET',read_termination = '\n')
-cmd = '*IDN?'
-cmd = ':SYSTem:COMMunicate:LAN:IP?'
-cmd = ':FREQuency:OFFSet?'
-cmd = ':FREQuency:CENTer?'
-cmd = ':FREQuency:REFerence?'
-cmd = ':FREQuency:STARt?'
-cmd = ':DISPlay:ANNotation:AMPLitude:UNIT?'
-cmd = ':MARKer:AMPLitude:VALue?'
-print(ins.query(cmd))
+        Returns
+        -------
+        visa_socket : `pyvisa.resources.tcpip.TCPIPSocket`
+        
+        '''
+        obj = super(E8663D, cls).__new__(cls,visa_library='@py')        
+        return obj
 
-### YE's play area ### 
+    def __init__(self,ipaddr,port):
+        '''
+        '''
+        resrc_name = 'TCPIP::{ipaddr}::{port}::SOCKET'.format(ipaddr=ipaddr,port=port)
+        self.socket = self.open_resource(resrc_name,read_termination = '\n')
+        self.options = {'fixed':None,
+        }
+        
+    def __getitem__(self, cmd):
+        '''
+        '''
+        self.options[cmd] = self.socket.query(cmd+'?')
+        return self.options[cmd]
+    
+    def __setitem__(self, item,*value):
+        '''
+        '''
+        self.options[item] = value
+        print('Dont set ',value)
 
-cmd = ':FREQuency:FIXed 40.0272MHZ' # set the fixed frequency of sweep
-ins.write(cmd)
-cmd = ':FREQuency:SYNThesis:SWEep:TARGet 40052200' # set sweep target freq in Hz
-ins.write(cmd)
-cmd = ':FREQuency:SYNThesis:SWEep:RATE 100' # sweep speed in Hz/s
-ins.write(cmd)
+    def __enter__(self):        
+        return self        
+        
+    def __exit__(self, *args):
+        self.close()
 
-cmd = ':FREQuency:SYNThesis:SWEep:STATe STARt' # start sweep
-ins.write(cmd)
 
-cmd = ':FREQuency:SYNThesis:SWEep:FREQuency?' # calls current frequency even during a sweep
-print(ins.query(cmd))
+class VoltageControlledOscillator(E8663D):
+    def __init__(self,ipaddr,port):
+        super(VoltageControlledOscillator,self).__init__(ipaddr,port)
 
-#cmd = ':FREQuency:STEP 100HZ'
-#ins.write(cmd)
-#cmd = ':FREQuency:FIXed DOWN'
-#ins.write(cmd)
+    @property
+    def fixedfrequency(self):        
+        self._fixedfrequency = self[':frequency:fixed']
+        return self._fixedfrequency
 
-cmd = ':FREQuency:FIXed?'
-print(ins.query(cmd))
+    @fixedfrequency.setter
+    def fixedfrequency(self,value):
+        self[':frequency:fixed'] = value
 
-### End of YE's play area ###
+    @property
+    def sweeptarget(self):        
+        self._sweeptarget = self[':frequency:SYNThesis:SWEep:TARGet']
+        return self._sweeptarget
 
-ins.close()
+    @sweeptarget.setter
+    def sweeptarget(self,value):
+        self[':frequency:SYNThesis:SWEep:TARGet'] = value        
+
+    @property
+    def sweeprate(self):        
+        self._sweeprate = self[':frequency:SYNThesis:SWEep:Rate']
+        return self._sweeprate
+
+    @sweeprate.setter
+    def sweeprate(self,value):
+        self[':frequency:SYNThesis:SWEep:Rate'] = value        
+
+    @property
+    def sweepfrequency(self):        
+        self._sweepfrequency = self[':frequency:SYNThesis:SWEep:Frequency']
+        return self._sweepfrequency
+
+    @sweepfrequency.setter
+    def sweepfrequency(self,value):
+        self[':frequency:SYNThesis:SWEep:Frequency'] = value        
+        
+
+        
+if __name__ == '__main__':
+    # # TEST E8663D
+    # with E8663D('10.68.150.65',5025) as e8663d_x:
+    #     print(e8663d_x[':frequency:fixed'])
+    #     print(e8663d_x['*IDN'])
+    
+    with VoltageControlledOscillator('10.68.150.65',5025) as vco_x:
+        vco_x.sweep(10,15,1)
