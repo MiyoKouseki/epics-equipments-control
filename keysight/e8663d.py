@@ -82,6 +82,16 @@ class VoltageControlledOscillator(E8663D):
         self[':frequency:SYNThesis:SWEep:Frequency'] = value        
         
 
+    def up(self,value,Unit):
+        # 1. check current frequency 
+        # 2. plus value on the current frequency
+        return None
+
+    def down(self,value,Unit):
+        # 1. check current frequency 
+        # 2. minus value on the current frequency
+        return None
+    
         
 if __name__ == '__main__':
     # # TEST E8663D
@@ -90,4 +100,7 @@ if __name__ == '__main__':
     #     print(e8663d_x['*IDN'])
     
     with VoltageControlledOscillator('10.68.150.65',5025) as vco_x:
-        vco_x.sweep(10,15,1)
+        vco_x.up(10,'Hz')
+        vco_x.down(10,'Hz')
+        vco_x.sweep(40.0272e6-10,40.0272e6+10,1)
+        
