@@ -1,0 +1,22 @@
+# import socket
+# HOST = "10.68.150.65"    # The remote host
+# PORT = 5023             # The same port as used by the server
+
+# s = socket.socket (socket.AF_INET, socket.SOCK_STREAM)
+# s.connect((HOST, PORT))
+
+# exit()
+import visa
+rm = visa.ResourceManager('@py')
+visa.log_to_screen
+ins = rm.open_resource('TCPIP::10.68.150.65::5025::SOCKET',read_termination = '\n')
+cmd = '*IDN?'
+cmd = ':SYSTem:COMMunicate:LAN:IP?'
+cmd = ':FREQuency:OFFSet?'
+cmd = ':FREQuency:CENTer?'
+cmd = ':FREQuency:REFerence?'
+cmd = ':FREQuency:STARt?'
+cmd = ':DISPlay:ANNotation:AMPLitude:UNIT?'
+cmd = ':MARKer:AMPLitude:VALue?'
+print(ins.query(cmd))
+ins.close()
