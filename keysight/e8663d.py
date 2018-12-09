@@ -1,6 +1,29 @@
-#
-#
+# coding:utf-8
 from visa import ResourceManager
+'''
+
+
+
+'''
+__author__ = "Koseki.Miyo <miyo@icrr.u-tokyo.ac.jp>"
+__status__ = "???"
+__version__ = "0.0.1"
+__date__    = "Dec 10 2018"
+
+
+def is_correct_unit(func):
+    def inner(*args,**kwargs):
+        try:
+            unit = kwargs['unit']
+        except KeyError:
+            print('[Error] Please give unit with either Hz or MHz.')            
+            exit()
+            
+        if not unit in ['Hz','MHz']:
+            raise ValueError('Invalid Unit')
+        return func(*args,**kwargs)
+    return inner
+
 
 class E8663D(ResourceManager):        
     def __new__(cls,*args,**kwargs):
@@ -31,20 +54,30 @@ class E8663D(ResourceManager):
     def __setitem__(self, item,*value):
         '''
         '''
-        self.options[item] = value
-        print('Dont set ',value)
+        cmd = item+' '+' '.join(value)
+        print('"',cmd,'"')
+        #self.options[cmd] # remove comment out when use. If not, do not remove!
 
-    def __enter__(self):        
+    def __enter__(self):
+        print('Socket open. Hello')
         return self        
         
-    def __exit__(self, *args):
-        self.close()
+    def __exit__(self, *args):        
+        self.socket.close()
+        print('Socket is now closed. Bye..!')
 
 
 class VoltageControlledOscillator(E8663D):
     def __init__(self,ipaddr,port):
         super(VoltageControlledOscillator,self).__init__(ipaddr,port)
 
+    # def __enter__(self):
+    #     super(VoltageControlledOscillator,self).__enter__()
+
+    # def __exit__(self,*args):
+    #     super(VoltageControlledOscillator,self).__exit__(*args)        
+        
+        
     @property
     def fixedfrequency(self):        
         self._fixedfrequency = self[':frequency:fixed']
@@ -73,34 +106,90 @@ class VoltageControlledOscillator(E8663D):
         self[':frequency:SYNThesis:SWEep:Rate'] = value        
 
     @property
-    def sweepfrequency(self):        
-        self._sweepfrequency = self[':frequency:SYNThesis:SWEep:Frequency']
-        return self._sweepfrequency
+    def sweepfrequency(self):
+        #self._sweepfrequency = self[':frequency:SYNThesis:SWEep:Frequency']
+        #return self._sweepfrequency
+        return self[':frequency:SYNThesis:SWEep:Frequency']
 
     @sweepfrequency.setter
     def sweepfrequency(self,value):
         self[':frequency:SYNThesis:SWEep:Frequency'] = value        
         
-
-    def up(self,value,Unit):
-        # 1. check current frequency 
-        # 2. plus value on the current frequency
-        return None
-
-    def down(self,value,Unit):
-        # 1. check current frequency 
-        # 2. minus value on the current frequency
-        return None
-    
+    def step(self,value,unit='Hz'):
+        if value>0:
+            self.up(abs(value),unit=unit)
+        elif value<0:
+            self.down(abs(value),unit=unit)
+        else:
+            raise ValueError('Invalid Value')
         
-if __name__ == '__main__':
-    # # TEST E8663D
-    # with E8663D('10.68.150.65',5025) as e8663d_x:
-    #     print(e8663d_x[':frequency:fixed'])
-    #     print(e8663d_x['*IDN'])
+    @is_correct_unit
+    def up(self,value,unit='Hz'):
+        print('Up..')
+        self[':frequency:step'] = '{0}{1}'.format(value,unit)
+        self[':frequency:fixed'] = 'up'
+
+        
+    @is_correct_unit
+    def down(self,value,unit='Hz'):
+        print('Down..')
+        self[':frequency:step'] = '{0}{1}'.format(value,unit)
+        self[':frequency:fixed'] = 'down'
+
+        
+    @is_correct_unit        
+    def fix(self,value,unit='MHz'):
+        print('Fix..')
+        
+        if unit is 'Hz':
+            raise ValueError("Unit is Hz. Isn't this 'M'Hz ?")
+            
+        self[':frequency:fixed'] = '{0}{1}'.format(value,unit)
+
+        
+    def sweep(self,start,stop,rate):
+        print('Sweep..')
+        self[':FREQuency:SYNThesis:SWEep:RATE'] = '{0}'.format(rate)
+        self[':FREQuency:SYNThesis:SWEep:target'] = '{0}'.format(stop)
+        self[':frequency:fixed'] = '{0}'.format(start)        
+        self[':FREQuency:SYNThesis:SWEep:state'] = 'start'
+
+        
+def test_e8663d():
+    with E8663D('10.68.150.65',5025) as e8663d_x:
+        print(e8663d_x[':frequency:fixed'])
+        print(e8663d_x['*IDN'])
+    print(e8663d_x[':frequency:fixed']) # error due to a diconnect
+
+
+def example():
+    # ---------
+    #  Example
+    # ---------
     
+    # Open scoket with given IP-address.    
     with VoltageControlledOscillator('10.68.150.65',5025) as vco_x:
-        vco_x.up(10,'Hz')
-        vco_x.down(10,'Hz')
-        vco_x.sweep(40.0272e6-10,40.0272e6+10,1)
+        # 0. check current status
+        print('fixedfrequency is ',vco_x.fixedfrequency)
         
+        # 1. run some 'static' commands
+        vco_x.fix(10,unit='MHz')
+        vco_x.step(10,unit='Hz')
+        vco_x.step(-10,unit='Hz')
+
+        # 2. run sweep, and check status continuously
+        vco_x.sweep(40.0272e6-10,40.0272e6+10,1)
+    
+    
+if __name__ == '__main__':
+    #test_e8663d()
+    #example()
+    import threading    
+    def echo_swepfreq():
+        _vco_x = VoltageControlledOscillator('10.68.150.65',5025)
+        print(_vco_x.sweepfrequency)
+        _vco_x.close()
+        
+    print('wait 3 seconds')
+    t = threading.Timer(3,echo_swepfreq)
+    t.start()
