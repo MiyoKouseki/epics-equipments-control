@@ -11,4 +11,7 @@ with VoltageControlledOscillator('10.68.150.65',5025) as vco_x:
     vco_x.step(-10,unit='Hz')
     
     # 2. run sweep, and check status continuously
-    vco_x.sweep(40.0272e6-10,40.0272e6+10,1)
+    start = 40.0272e6 - 10 
+    stop =  40.0272e6 + 10
+    rate = 1
+    vco_x.sweep(start,stop,rate)
