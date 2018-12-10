@@ -183,7 +183,8 @@ def example():
     
 if __name__ == '__main__':
     #test_e8663d()
-    #example()
+    example()
+    exit()
     import threading    
     def echo_swepfreq():
         _vco_x = VoltageControlledOscillator('10.68.150.65',5025)
