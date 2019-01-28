@@ -11,3 +11,8 @@ Newfocus8742のピコモータドライバーをEPICSで動かすためのシス
  * 開発用のファイル： /opt/rtcds/userapps/release/cds/common/scripts/picomotor_test/ (scripts under construction)
   * ファイル構成は上と基本的に同じ。(File structure is fundamentally the same as above.)
   * テストのためのMEDM画面もここにある。(There is also a test MEDM screen.)
+
+## MEDMファイル (MEDM files)
+ * 実際に動かしているファイル：/opt/rtcds/userapps/release/cds/common/medm/picomotor/ (Active screens are here.)
+  * ./HAPPY_PICO_MASTER.adl : ドライバーの一覧。(Driver overview.)
+  * ./HAPPY_PICO_CUST.adl : ドライバーを動かすための画面。(Driver startup.)
