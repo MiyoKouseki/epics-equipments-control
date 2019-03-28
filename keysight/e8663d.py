@@ -42,6 +42,7 @@ class E8663D(ResourceManager):
         '''
         resrc_name = 'TCPIP::{ipaddr}::{port}::SOCKET'.format(ipaddr=ipaddr,port=port)
         self.socket = self.open_resource(resrc_name,read_termination = '\n')
+        #self.timeout = 5000
         self.options = {'fixed':None,
         }
         
@@ -55,8 +56,8 @@ class E8663D(ResourceManager):
         '''
         '''
         cmd = item+' '+' '.join(value)
-        print('"',cmd,'"')
-        #self.options[cmd] # remove comment out when use. If not, do not remove!
+        print '"',cmd,'"'
+        self.socket.write(cmd) # remove comment out when use. If not, do not remove!
 
     def __enter__(self):
         print('Socket open. Hello')
@@ -159,7 +160,7 @@ def test_e8663d():
     with E8663D('10.68.150.65',5025) as e8663d_x:
         print(e8663d_x[':frequency:fixed'])
         print(e8663d_x['*IDN'])
-    print(e8663d_x[':frequency:fixed']) # error due to a diconnect
+    #print(e8663d_x[':frequency:fixed']) # error due to a diconnect
 
 
 def example():
@@ -182,8 +183,8 @@ def example():
     
     
 if __name__ == '__main__':
-    #test_e8663d()
-    example()
+    test_e8663d()
+    #example()
     exit()
     import threading    
     def echo_swepfreq():
