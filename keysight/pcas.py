@@ -56,12 +56,12 @@ pvdb = {
     },
     "_SWEEP_START": {
         'prec': 10,
-        'value': 40.0272e6-10,
+        'value': 40e6,
         'unit':'Hz',        
     },
     "_SWEEP_STOP": {
         'prec': 10,
-        'value': 40.0272e6+10,
+        'value': 40e6+10,
         'unit':'Hz',        
     },        
     "_SWEEP_RATE": {
@@ -93,22 +93,22 @@ class PcasDriver(pcaspy.Driver):
         if "STEP_REV" in channel and value == ON:
             step = self.getParam("_STEP_N")*-1
             self.updatePVs()
-            #self.driver.step(step,unit='Hz')  # dont remove !!!
+            self.driver.step(step,unit='Hz')  # dont remove !!!
         if "STEP_FWD" in channel and value == ON:
             step = self.getParam("_STEP_N")*1
             self.updatePVs()
-            #self.driver.step(step,unit='Hz')  # dont remove !!!
+            self.driver.step(step,unit='Hz')  # dont remove !!!
         if "FIX_GO" in channel and value == ON:
             freq = self.getParam("_FIX_N")
             self.updatePVs()
-            #self.driver.fix(freq,unit='Hz')  # dont remove !!!
+            self.driver.fix(freq,unit='Hz')  # dont remove !!!
         if "SWEEP_GO" in channel and value == ON:
             start = self.getParam("_SWEEP_START")
             stop = self.getParam("_SWEEP_STOP")
             rate = self.getParam("_SWEEP_RATE")
             print(start, stop, rate)
             self.updatePVs()            
-            #self.driver.sweep(start,stop,rate) # dont remove !!!
+            self.driver.sweep(start,stop,rate) # dont remove !!!
             
         self.updatePVs()
         return True
@@ -168,7 +168,7 @@ if __name__ == '__main__':
     #pl = subprocess.Popen('ps -ef | grep python',shell=True,stdout=subprocess.PIPE).communicate()[0]
     #print pl
     #exit()
-    prefix   = 'K1:VCO_X'
+    prefix   = 'K1:ALS-X_BEAT_LO'
     driverIP = '10.68.150.65'
     mydriver   = e8663d.VoltageControlledOscillator('10.68.150.65',5025)
     picoserver = PcasServer(prefix, mydriver)

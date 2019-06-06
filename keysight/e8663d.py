@@ -139,11 +139,12 @@ class VoltageControlledOscillator(E8663D):
 
         
     @is_correct_unit        
-    def fix(self,value,unit='MHz'):
+    #def fix(self,value,unit='MHz'):
+    def fix(self,value,unit='Hz'):
         print('Fix..')
         
-        if unit is 'Hz':
-            raise ValueError("Unit is Hz. Isn't this 'M'Hz ?")
+        #if unit is 'Hz':
+        #    raise ValueError("Unit is Hz. Isn't this 'M'Hz ?")
             
         self[':frequency:fixed'] = '{0}{1}'.format(value,unit)
 
