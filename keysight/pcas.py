@@ -129,34 +129,33 @@ class PcasServer(pcaspy.SimpleServer):
         dt = timedelta(seconds=3600)
         while True:
             self.server.process(0.1)
-            now = datetime.now()
-            diff = now- start
-            #print diff,dt,diff>dt
-            if diff>dt: # 12sec
-                self.driver.close()
-                print( "==================================")
-                print( '60 minutes passed. Bye!')
-                print( "I'll be back..")
-                print( """
-                　　　　　　　　　　　 /j^i
-                　　　　　　　　　　 ./　 ;!
-                　　　　　　　　　　/　 /_＿,,..
-                　　　　　　　　　/　　`(_t＿,__〕
-                　　　　　　　　 /　　　 '(_t＿,__〕
-                　　　　　　　　/　　　　｛_i＿,__〕
-                　　　　　　 ／　　　 ノ　 {_i＿_〉
-                　　　　　／　　　　　　＿,..-'"
-                　　　／　　　　　　／
-                ～～～～～～～～～～～～～～～～
-                """)
-                print( "==================================")
-                #engine = pyttsx.init()
-                #engine.setProperty('rate', 100)
-                #engine.say('Bye')
-                #engine.runAndWait()
-                exit()
-            else:
-                i=i+1
+            # now = datetime.now()
+            # diff = now- start
+            # #if diff>dt: # 12sec
+            #     self.driver.close()
+            #     print( "==================================")
+            #     print( '60 minutes passed. Bye!')
+            #     print( "I'll be back..")
+            #     print( """
+            #     　　　　　　　　　　　 /j^i
+            #     　　　　　　　　　　 ./　 ;!
+            #     　　　　　　　　　　/　 /_＿,,..
+            #     　　　　　　　　　/　　`(_t＿,__〕
+            #     　　　　　　　　 /　　　 '(_t＿,__〕
+            #     　　　　　　　　/　　　　｛_i＿,__〕
+            #     　　　　　　 ／　　　 ノ　 {_i＿_〉
+            #     　　　　　／　　　　　　＿,..-'"
+            #     　　　／　　　　　　／
+            #     ～～～～～～～～～～～～～～～～
+            #     """)
+            #     print( "==================================")
+            #     #engine = pyttsx.init()
+            #     #engine.setProperty('rate', 100)
+            #     #engine.say('Bye')
+            #     #engine.runAndWait()
+            #     exit()
+            # else:
+            #     i=i+1
 
 if __name__ == '__main__':
     #import pcaspico
