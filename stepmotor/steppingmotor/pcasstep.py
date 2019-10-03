@@ -34,6 +34,11 @@ pvdb ={
         'prec': 4,
         'value': 0,
     },
+    '0_INTPOSITION': {
+        'desc': "move pico motor forward",
+        'prec': 4,
+        'value': 0,
+    },
     '0_UPDATE': {
         'desc': "move pico motor forward",
         'prec': 4,
@@ -65,6 +70,11 @@ pvdb ={
         'value': 0,
     },
     '1_POSITION': {
+        'desc': "move pico motor forward",
+        'prec': 4,
+        'value': 0,
+    },
+    '1_INTPOSITION': {
         'desc': "move pico motor forward",
         'prec': 4,
         'value': 0,
@@ -104,6 +114,11 @@ pvdb ={
         'prec': 4,
         'value': 0,
     },
+    '2_INTPOSITION': {
+        'desc': "move pico motor forward",
+        'prec': 4,
+        'value': 0,
+    },
     '2_UPDATE': {
         'desc': "move pico motor forward",
         'prec': 4,
@@ -135,6 +150,11 @@ pvdb ={
         'value': 0,
     },
     '3_POSITION': {
+        'desc': "move pico motor forward",
+        'prec': 4,
+        'value': 0,
+    },
+    '3_INTPOSITION': {
         'desc': "move pico motor forward",
         'prec': 4,
         'value': 0,
@@ -174,6 +194,11 @@ pvdb ={
         'prec': 4,
         'value': 0,
     },
+    '4_INTPOSITION': {
+        'desc': "move pico motor forward",
+        'prec': 4,
+        'value': 0,
+    },
     '4_UPDATE': {
         'desc': "move pico motor forward",
         'prec': 4,
@@ -205,6 +230,11 @@ pvdb ={
         'value': 0,
     },
     '5_POSITION': {
+        'desc': "move pico motor forward",
+        'prec': 4,
+        'value': 0,
+    },
+    '5_INTPOSITION': {
         'desc': "move pico motor forward",
         'prec': 4,
         'value': 0,
@@ -248,7 +278,8 @@ class PcasDriver(pcaspy.Driver):
         self.driver.setTargetSpeed(500, 5)
         self.driver.setAcceleration(500,5)
 
-	self.logfile = '/kagra/Dropbox/Subsystems/VIS/Scripts/StepMotor/LogFiles/'+self.prefix+'.log'        
+	self.logfile = '/kagra/Dropbox/Subsystems/VIS/Scripts/StepMotor/LogFiles/'+self.prefix+'.log'
+        self.intfile = '/kagra/Dropbox/Subsystems/VIS/Scripts/StepMotor/LogFiles/int'+self.prefix+'.log'
         
         self.updatePVs()
 
@@ -295,6 +326,10 @@ class PcasDriver(pcaspy.Driver):
 
         if name == "STOP":
             self.driver.stop(motorAddr)
+## added 2019/08/06 ##
+            pos =  self.driver.getActualPosition(motorAddr)
+            self.setParam(direction+"_POSITION",pos)
+####
             
         if name == "STEP":
             count = self.getParam(direction+"_STEP")

@@ -1,0 +1,82 @@
+2019-08-20 14:23:59,100 Checking F0
+2019-08-20 14:23:59,214 K1:STEPPER-ETMX_GAS_0_ACC => 100.0
+2019-08-20 14:23:59,257 K1:STEPPER-ETMX_GAS_0_VEL => 100.0
+2019-08-20 14:24:09,273 initial input value (difference from the nominal) is 1637.157341
+2019-08-20 14:24:09,356 K1:STEPPER-ETMX_GAS_0_STEP => 20000.0
+2019-08-20 14:24:09,357 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:24:09,397 K1:VIS-ETMX_COMMISH_MESSAGE => ACTUATINGSTEPPER-ETMX_GAS_0
+2019-08-20 14:24:22,401 new input value (difference from the nominal) is 1635.164290
+2019-08-20 14:24:22,402 K1:VIS-ETMX_COMMISH_MESSAGE => PLS CHECK STEPPER MOTOR ACTUATION
+2019-08-20 14:24:22,402 Keystone does not seem to work well. Please check carefully.
+2019-08-20 14:24:22,492 K1:STEPPER-ETMX_GAS_0_UPDATE => 1
+2019-08-20 14:24:22,506 K1:STEPPER-ETMX_GAS_0_UPDATE => 0
+2019-08-20 14:24:22,507 finishing Offload F0
+2019-08-20 14:24:22,507 Checking F1
+2019-08-20 14:24:22,591 K1:STEPPER-ETMX_GAS_1_ACC => 100.0
+2019-08-20 14:24:22,658 K1:STEPPER-ETMX_GAS_1_VEL => 100.0
+2019-08-20 14:24:32,686 initial input value (difference from the nominal) is 1823.932464
+2019-08-20 14:24:32,770 K1:STEPPER-ETMX_GAS_1_STEP => 20000.0
+2019-08-20 14:24:32,770 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:24:32,774 K1:VIS-ETMX_COMMISH_MESSAGE => ACTUATINGSTEPPER-ETMX_GAS_1
+2019-08-20 14:24:45,778 new input value (difference from the nominal) is 1713.036764
+2019-08-20 14:24:45,830 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:24:58,834 new input value (difference from the nominal) is 1581.578498
+2019-08-20 14:24:58,893 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:25:11,899 new input value (difference from the nominal) is 1421.813873
+2019-08-20 14:25:11,952 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:25:24,966 new input value (difference from the nominal) is 1284.298082
+2019-08-20 14:25:25,023 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:25:38,027 new input value (difference from the nominal) is 1128.232810
+2019-08-20 14:25:38,090 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:25:51,094 new input value (difference from the nominal) is 966.987403
+2019-08-20 14:25:51,149 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:26:04,153 new input value (difference from the nominal) is 812.897812
+2019-08-20 14:26:04,214 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:26:17,219 new input value (difference from the nominal) is 636.160724
+2019-08-20 14:26:17,272 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:26:30,285 new input value (difference from the nominal) is 483.127434
+2019-08-20 14:26:30,338 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:26:43,343 new input value (difference from the nominal) is 324.861441
+2019-08-20 14:26:43,399 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:26:56,409 new input value (difference from the nominal) is 169.411168
+2019-08-20 14:26:56,411 K1:VIS-ETMX_COMMISH_MESSAGE => Done
+2019-08-20 14:26:56,478 K1:STEPPER-ETMX_GAS_1_UPDATE => 1
+2019-08-20 14:26:56,481 K1:STEPPER-ETMX_GAS_1_UPDATE => 0
+2019-08-20 14:26:56,481 finishing Offload F1
+2019-08-20 14:26:56,481 Checking BF
+2019-08-20 14:26:56,595 K1:STEPPER-ETMX_GAS_4_ACC => 100.0
+2019-08-20 14:26:56,668 K1:STEPPER-ETMX_GAS_4_VEL => 100.0
+2019-08-20 14:27:06,678 initial input value (difference from the nominal) is 95.000684
+2019-08-20 14:27:06,793 K1:STEPPER-ETMX_GAS_4_UPDATE => 1
+2019-08-20 14:27:06,795 K1:STEPPER-ETMX_GAS_4_UPDATE => 0
+2019-08-20 14:27:06,795 finishing Offload BF
+2019-08-20 14:27:06,796 Checking F3
+2019-08-20 14:27:06,911 K1:STEPPER-ETMX_GAS_3_ACC => 100.0
+2019-08-20 14:27:06,950 K1:STEPPER-ETMX_GAS_3_VEL => 100.0
+2019-08-20 14:27:16,963 initial input value (difference from the nominal) is 787.502421
+2019-08-20 14:27:17,079 K1:STEPPER-ETMX_GAS_3_STEP => 20000.0
+2019-08-20 14:27:17,079 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:27:17,081 K1:VIS-ETMX_COMMISH_MESSAGE => ACTUATINGSTEPPER-ETMX_GAS_3
+2019-08-20 14:27:30,084 new input value (difference from the nominal) is 470.763049
+2019-08-20 14:27:30,137 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:27:43,142 new input value (difference from the nominal) is 209.665459
+2019-08-20 14:27:43,198 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:27:56,201 new input value (difference from the nominal) is 10.345464
+2019-08-20 14:27:56,203 K1:VIS-ETMX_COMMISH_MESSAGE => Done
+2019-08-20 14:27:56,280 K1:STEPPER-ETMX_GAS_3_UPDATE => 1
+2019-08-20 14:27:56,283 K1:STEPPER-ETMX_GAS_3_UPDATE => 0
+2019-08-20 14:27:56,283 finishing Offload F3
+2019-08-20 14:27:56,284 Checking F2
+2019-08-20 14:27:56,392 K1:STEPPER-ETMX_GAS_5_ACC => 100.0
+2019-08-20 14:27:56,460 K1:STEPPER-ETMX_GAS_5_VEL => 100.0
+2019-08-20 14:28:06,476 initial input value (difference from the nominal) is 2968.232169
+2019-08-20 14:28:06,575 K1:STEPPER-ETMX_GAS_5_STEP => 20000.0
+2019-08-20 14:28:06,576 Actuating motors by +20000 counts, waiting 3 sec for settling
+2019-08-20 14:28:06,577 K1:VIS-ETMX_COMMISH_MESSAGE => ACTUATINGSTEPPER-ETMX_GAS_5
+2019-08-20 14:28:19,581 new input value (difference from the nominal) is 2968.261305
+2019-08-20 14:28:19,587 K1:VIS-ETMX_COMMISH_MESSAGE => PLS CHECK STEPPER MOTOR ACTUATION
+2019-08-20 14:28:19,587 Keystone does not seem to work well. Please check carefully.
+2019-08-20 14:28:19,697 K1:STEPPER-ETMX_GAS_5_UPDATE => 1
+2019-08-20 14:28:19,705 K1:STEPPER-ETMX_GAS_5_UPDATE => 0
+2019-08-20 14:28:19,705 finishing Offload F2
+2019-08-20 14:28:19,708 K1:VIS-ETMX_BO_ENCODE_STEP_GAS_SW => 0

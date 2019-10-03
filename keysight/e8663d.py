@@ -41,7 +41,7 @@ class E8663D(ResourceManager):
         '''
         '''
         resrc_name = 'TCPIP::{ipaddr}::{port}::SOCKET'.format(ipaddr=ipaddr,port=port)
-        self.socket = self.open_resource(resrc_name,read_termination = '\n')
+        self.socket = self.open_resource(resrc_name,read_termination = '\n',write_termination='\n')
         #self.timeout = 5000
         self.options = {'fixed':None,
         }
@@ -121,6 +121,8 @@ class VoltageControlledOscillator(E8663D):
             self.up(abs(value),unit=unit)
         elif value<0:
             self.down(abs(value),unit=unit)
+        elif value==0:
+            pass
         else:
             raise ValueError('Invalid Value')
         

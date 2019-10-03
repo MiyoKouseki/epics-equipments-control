@@ -24,7 +24,7 @@ channel = {
         "SR3_IP":{
                 "config"  : 'SR',
                 "motorA"  : 0,
-                "motorB"  : 1,
+                "motorB"  : 4,
                 "motorC"  : 2,
                 "motorY"  : 3,
                 "signA"    : 1,
@@ -37,7 +37,7 @@ channel = {
                 "motorA"  : 0,
                 "motorB"  : 1,
                 "motorC"  : 2,
-                "motorY"  : 3,
+                "motorY"  : 4,
                 "signA"    : 1,
                 "signB"    : 1,
                 "signC"    : 1,

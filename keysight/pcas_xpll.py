@@ -1,0 +1,154 @@
+#!/usr/bin/env python
+#
+#! coding:utf-8
+import os
+import pcaspy
+import logging
+import time
+#import config
+from datetime import datetime
+from datetime import timedelta
+#import pyttsx
+
+#pvdb = config.pvdb
+##################################################
+#'''
+
+ON = 1.0
+#'''
+##################################################
+#os.environ['EPICS_CAS_INTF_ADDR_LIST'] = '10.68.10.255'
+#os.environ['EPICS_CAS_INTF_ADDR_LIST'] = 'localhost'
+#os.environ['EPICS_CAS_SERVER_PORT'] = '58901'
+# https://pcaspy.readthedocs.org/en/latest/tutorial.html
+
+import logging
+import logging.config
+
+from __init__ import get_module_logger
+logger = get_module_logger(__name__)
+
+pvdb = {
+    "_STEP_REV": {
+        'prec': 4,
+        'value': 0,
+    },
+    "_STEP_FWD": {
+        'prec': 4,
+        'value': 0,
+    },
+    "_STEP_N": {
+        'prec': 4,
+        'value': 10,
+        'unit':'Hz'
+    },
+    "_FIX_GO": {
+        'prec': 4,
+        'value': 0,
+    },    
+    "_FIX_N": {
+        'prec': 10,
+        'value': 40e6,
+        'unit':'Hz'
+    },
+    "_SWEEP_GO": {
+        'prec': 4,
+        'value': 0,
+    },
+    "_SWEEP_START": {
+        'prec': 10,
+        'value': 40e6,
+        'unit':'Hz',        
+    },
+    "_SWEEP_STOP": {
+        'prec': 10,
+        'value': 40e6+10,
+        'unit':'Hz',        
+    },        
+    "_SWEEP_RATE": {
+        'prec': 4,
+        'value': 1,
+        'unit':'Hz',
+    },
+}
+
+
+class PcasDriver(pcaspy.Driver):
+    def __init__(self, driver, prefix):
+        super(PcasDriver, self).__init__()
+        self.driver = driver
+        self.prefix = prefix
+        
+    def read(self, channel):
+        value = self.getParam(channel)    
+        return value    
+    
+    def write(self, channel, value):
+        """
+        This function is called every "CAPUT (EPICS-CHANNEL) (VALUE)" command.
+        epics_channel : the channlel excluded PREFIX from EPICS-CHANNEL
+        value : VALUE
+        """
+        self.setParam(channel, value) # need ! why????
+        driverAddr = 1
+        if "STEP_REV" in channel and value == ON:
+            step = self.getParam("_STEP_N")*-1
+            self.updatePVs()
+            self.driver.step(step,unit='Hz')  # dont remove !!!
+        if "STEP_FWD" in channel and value == ON:
+            step = self.getParam("_STEP_N")*1
+            self.updatePVs()
+            self.driver.step(step,unit='Hz')  # dont remove !!!
+        if "FIX_GO" in channel and value == ON:
+            freq = self.getParam("_FIX_N")
+            self.updatePVs()
+            self.driver.fix(freq,unit='Hz')  # dont remove !!!
+        if "SWEEP_GO" in channel and value == ON:
+            start = self.getParam("_SWEEP_START")
+            stop = self.getParam("_SWEEP_STOP")
+            rate = self.getParam("_SWEEP_RATE")
+            print(start, stop, rate)
+            self.updatePVs()            
+            self.driver.sweep(start,stop,rate) # dont remove !!!
+            
+        self.updatePVs()
+        return True
+    
+class PcasServer(pcaspy.SimpleServer):
+    def __init__(self, prefix, driver):
+        super(PcasServer, self).__init__()
+        logger.info("Initialize PCAServer")
+        self.server = pcaspy.SimpleServer()
+        self.server.createPV(prefix, pvdb)
+        self.driver = driver
+        driver_ = PcasDriver(driver,prefix)
+        
+    def run(self):
+        logger.info("Start server.")        
+        i = 0
+        start = datetime.now()
+        dt = timedelta(seconds=3600)
+        while True:
+            self.server.process(0.1)
+
+if __name__ == '__main__':
+    #import pcaspico
+    #import newfocus8742
+    import sys
+    import time
+    import e8663d
+    #import subprocess
+    #pl = subprocess.Popen('ps -ef | grep python',shell=True,stdout=subprocess.PIPE).communicate()[0]
+    #print pl
+    #exit()
+    prefix   = 'K1:ALS-X_BEAT_LO'
+    driverIP = '10.68.150.65'
+    mydriver   = e8663d.VoltageControlledOscillator('10.68.150.65',5025)
+    picoserver = PcasServer(prefix, mydriver)
+    try:
+        picoserver.run()
+    except KeyboardInterrupt as e:
+        mydriver.close()
+        print( e)
+        print( 'Detect keyboard interrupt. Bye!')
+        exit()
