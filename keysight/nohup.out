@@ -1,0 +1,23 @@
+2019-10-07 00:18:59,642 - pyvisa - DEBUG - SerialSession was not imported No module named serial.
+2019-10-07 00:18:59,650 - pyvisa - DEBUG - USBSession and USBRawSession were not imported No module named usb.
+2019-10-07 00:18:59,663 - pyvisa - DEBUG - TCPIPSession was correctly imported.
+2019-10-07 00:18:59,673 - pyvisa - DEBUG - GPIBSession was not imported No module named gpib.
+2019-10-07 00:18:59,673 - pyvisa - DEBUG - Created library wrapper for unset
+2019-10-07 00:18:59,673 - pyvisa - DEBUG - Created ResourceManager with session 3536582
+2019-10-07 00:18:59,674 - pyvisa - DEBUG - TCPIP::10.68.150.66::5025::SOCKET - opening ...
+2019-10-07 00:18:59,685 - pyvisa - DEBUG - TCPIP::10.68.150.66::5025::SOCKET - is open with session 7483502
+cas warning: Configured TCP port was unavailable.
+cas warning: Using dynamically assigned TCP port 39746,
+cas warning: but now two or more servers share the same UDP port.
+cas warning: Depending on your IP kernel this server may not be
+cas warning: reachable with UDP unicast (a host's IP in EPICS_CA_ADDR_LIST)
+2019-10-07 00:18:59,685 - logExample - INFO - Initialize PCAServer
+cas warning: Configured TCP port was unavailable.
+cas warning: Using dynamically assigned TCP port 55055,
+cas warning: but now two or more servers share the same UDP port.
+cas warning: Depending on your IP kernel this server may not be
+cas warning: reachable with UDP unicast (a host's IP in EPICS_CA_ADDR_LIST)
+2019-10-07 00:18:59,686 - logExample - INFO - Start server.
+2019-10-07 00:19:16,257 - pyvisa - DEBUG - Closing ResourceManager (session: 3536582)
+
+Detect keyboard interrupt. Bye!

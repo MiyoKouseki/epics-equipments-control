@@ -42,11 +42,11 @@ class suppress_stdout_stderr(object):
 
 i = 0
 freq_default = 46.e6
-
 with VoltageControlledOscillator('10.68.150.66',5025) as vco_y:
     while True:
         try:
             freq = float(vco_y.sweepfrequency) - freq_default
+            #freq = float(vco_y.fixedfrequency) - freq_default
             with suppress_stdout_stderr():
                 try:
                     ezca.write("ALS-Y_BEAT_LO_FREQ",str(freq))
